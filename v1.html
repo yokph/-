@@ -172,7 +172,7 @@
                 otherProduct: document.getElementById('otherProduct').value
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbycVQBpwSyEMuJcHJxYLUAWboMbsLyhXMlv4ENi-1NYSkxyaT3-IjHmm3sNGprWFMI/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbzHDl7L8Z6kkffBWT-fIfIIv1tvS5LoDezTALeld1PR1hzxWhwaWFhHI_agD2SzpdUS/exec', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -209,11 +209,11 @@
         <div>
             <label for="location">ระบุสถานที่:</label>
             <div class="dropdown">
-                <input type="text" placeholder="Search.." id="locationInput" onkeyup="filterFunction('locationInput', 'locationDropdown')" onclick="showDropdown('locationDropdown')">
+                <input type="text" placeholder="Search.." id="locationInput" onkeyup="filterFunction('locationInput', 'locationDropdown')" onclick="showDropdown('locationDropdown')" onchange="checkOther(this)">
                 <div id="locationDropdown" class="dropdown-content">
-                    <div onclick="selectItem('locationInput', 'locationDropdown', event)">กรุงเทพ</div>
-                    <div onclick="selectItem('locationInput', 'locationDropdown', event)">ชัยนาท</div>
-                    <div onclick="selectItem('locationInput', 'locationDropdown', event)">อื่นๆ</div>
+                    <div onclick="selectItem('locationInput', 'locationDropdown', event); checkOther({value: 'กรุงเทพ'});">กรุงเทพ</div>
+                    <div onclick="selectItem('locationInput', 'locationDropdown', event); checkOther({value: 'ชัยนาท'});">ชัยนาท</div>
+                    <div onclick="selectItem('locationInput', 'locationDropdown', event); checkOther({value: 'other'});">อื่นๆ</div>
                 </div>
             </div>
             <input type="text" id="otherLocation" name="otherLocation" style="display: none;" placeholder="โปรดระบุสถานที่"> <!-- ช่องข้อความสำหรับกรอกสถานที่เมื่อเลือก "อื่นๆ" -->
